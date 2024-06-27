@@ -92,3 +92,13 @@ function computeTheAmount() {
 }
 
 console.log(computeTheAmount().lacs(5).crore(2).crore(6).thounsands(5).value());
+
+
+let array1= [-5,-4,-3,0,1,4,6]
+console.log(sortArray(array1));
+
+function sortArray(arr){
+    console.log(arguments.length);
+    if(!Array.isArray(arr) ) return `${arr} is not a array`
+    return arr.sort((a,b)=>b-a)
+}
