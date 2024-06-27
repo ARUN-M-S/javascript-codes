@@ -66,3 +66,29 @@ function flattenObject(data) {
     return x
 }
 // console.log(flattenObject(obj));
+
+// Q3 // console.log(computeTheAmount().lacs(5).crore(2).crore(6).thounsands(5).value());
+
+function computeTheAmount() {
+    let totalAmount = 0;
+    const operations = {
+        lacs(amount) {
+            totalAmount += amount * 100000;
+            return this
+        },
+        crore(amount) {
+            totalAmount += amount * 10000000;
+            return this
+        },
+        thounsands(amount) {
+            totalAmount += amount * 1000;
+            return this
+        },
+        value() {
+            return totalAmount
+        }
+    }
+    return operations
+}
+
+console.log(computeTheAmount().lacs(5).crore(2).crore(6).thounsands(5).value());
