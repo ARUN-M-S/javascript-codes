@@ -118,7 +118,17 @@ resolve(func.apply(this,args))
     }
 }
 
-
+function throttlle(func,limit){
+ let throttled = false;
+return function(...args){
+    if(!throttled){
+        func.apply(this,args);
+        throttled= true;
+        setTimeout(()=>{
+throttled=false
+        },limit)
+    }
+}}
 
 
 
