@@ -102,3 +102,35 @@ console.log(computeTheAmount().lacs(5).crore(2).crore(6).thounsands(5).value());
 //     if(!Array.isArray(arr) ) return `${arr} is not a array`
 //     return arr.sort((a,b)=>b-a)
 // }
+
+// Debouncing
+
+
+function deBouncing(func,wait){
+    let timeOut;
+    return function(...args){
+        clearTimeout(timeOut)
+        return new Promise((resolve)=>{
+           timeOut = setTimeout(()=>{
+resolve(func.apply(this,args))
+           },wait)
+        })
+    }
+}
+
+
+
+
+
+function countNumber() {
+    return "called, " + Date.now();
+}
+
+
+ let deBouncingCall = deBouncing(countNumber, 3000);
+
+// // To see the debouncing in action, you need to call the function multiple times
+ deBouncingCall().then(console.log);  // This will be debounced
+ setTimeout(() => deBouncingCall().then(console.log), 1000);  // This call will be debounced
+// setTimeout(() => deBouncingCall().then(console.log), 2000);  // This call will be debounced
+// setTimeout(() => deBouncingCall().then(console.log), 4000);  // This call will execute
