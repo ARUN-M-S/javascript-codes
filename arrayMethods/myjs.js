@@ -144,3 +144,17 @@ function countNumber() {
  setTimeout(() => deBouncingCall().then(console.log), 1000);  // This call will be debounced
 // setTimeout(() => deBouncingCall().then(console.log), 2000);  // This call will be debounced
 // setTimeout(() => deBouncingCall().then(console.log), 4000);  // This call will execute
+
+
+
+function plindrome(data) {
+if (data.length ==0) return "Provide valid data"   
+
+for(let i=0;i<data.length/2;i++){
+    if(data[i]!=data[data.length-1-i]) return "Not a palindorm"
+}
+return "Palindrom"
+
+}
+
+console.log(plindrome('MALAYALA'));
