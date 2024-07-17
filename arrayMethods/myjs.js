@@ -157,4 +157,35 @@ return "Palindrom"
 
 }
 
-console.log(plindrome('MALAYALA'));
+// console.log(plindrome('MALAYALA'));/
+
+let input = "Welcome arun to flexm!"
+
+function reverseString(input){
+    if(input.length<=0) return "Please provide a valide data"
+let result = ' ';
+let wordLength=0
+    for(let i =0;i<=input.length;i++){
+if(i==input.length || input[i]== ' '){
+    for(let j=i-1;j>=wordLength;j--){
+        result+=input[j]
+    }
+    if(input[i]== ' '){
+        result+='  '
+    }
+    wordLength= i+1
+}
+    }
+    return result
+}
+
+
+function noramlReverse(input){
+    let result = ' '
+    for(let i=input.length-1;i>=0;i--){
+result+=input[i]
+    }
+    return result
+}
+
+console.log(noramlReverse(input));
