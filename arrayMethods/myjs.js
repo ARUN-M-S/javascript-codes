@@ -91,7 +91,7 @@ function computeTheAmount() {
     return operations
 }
 
-console.log(computeTheAmount().lacs(5).crore(2).crore(6).thounsands(5).value());
+// console.log(computeTheAmount().lacs(5).crore(2).crore(6).thounsands(5).value());
 
 
 // let array1= [-5,-4,-3,0,1,4,6]
@@ -161,23 +161,23 @@ return "Palindrom"
 
 let input = "Welcome arun to flexm!"
 
-function reverseString(input){
-    if(input.length<=0) return "Please provide a valide data"
-let result = ' ';
-let wordLength=0
-    for(let i =0;i<=input.length;i++){
-if(i==input.length || input[i]== ' '){
-    for(let j=i-1;j>=wordLength;j--){
-        result+=input[j]
-    }
-    if(input[i]== ' '){
-        result+='  '
-    }
-    wordLength= i+1
-}
-    }
-    return result
-}
+// function reverseString(input){
+//     if(input.length<=0) return "Please provide a valide data"
+// let result = ' ';
+// let wordLength=0
+//     for(let i =0;i<=input.length;i++){
+// if(i==input.length || input[i]== ' '){
+//     for(let j=i-1;j>=wordLength;j--){
+//         result+=input[j]
+//     }
+//     if(input[i]== ' '){
+//         result+='  '
+//     }
+//     wordLength= i+1
+// }
+//     }
+//     return result
+// }
 
 
 function noramlReverse(input){
@@ -188,4 +188,84 @@ result+=input[i]
     return result
 }
 
-console.log(noramlReverse(input));
+// console.log(noramlReverse(input));
+
+
+function reverseString(input) {
+    let result = ' ';
+    let woldLength =0
+    for(let i=0;i<=input.length;i++){
+
+        if(i == input.length || input[i] == ' '){
+            for(let j=i-1;j>=woldLength;j--){
+result+= input[j]
+            }
+            if(input[i]=' '){
+                result+=' '
+            }
+        woldLength=i+1
+
+        }
+       
+
+    }
+    return result
+}
+// console.log(reverseString(input));
+
+
+
+
+
+let objs={  a:{
+    a1:1,
+    a2:2,
+    a3:3
+},
+b:{
+    b1:1,
+    b3:5,
+    z:{
+        z1:3,
+        z2:8
+    }
+
+},
+c:{
+    d1:5
+}
+}
+
+// function flattenObjects(data) {
+// let x = {}
+
+// function flattens(data) {
+//     Object.keys(data).forEach((keys) => {
+//         if (typeof (data[keys]) == 'object') {
+//             flattens(data[keys])
+//         } else {
+//             x[keys] = data[keys]
+//         }
+//     })
+// }
+// flattens(data)
+// return x
+// }
+console.log(flattenObject(objs));
+
+function flattenObject(data){
+    let result = []
+
+    function flatten(data){
+        Object.keys(data).forEach((keys)=>{
+            if(typeof(data[keys]) =='object'){
+                flatten(data[keys])
+            }else{
+                result[keys]=data[keys]
+            }
+        })
+    }
+    flatten(data)
+    return result
+}
+
