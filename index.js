@@ -74,4 +74,4 @@ function chnageLetter(x){
     return result
 }
 
-console.log(chnageLetter('aRuNmSss'));
+console.log(chnageLetter('aRuNmSsssssMmmss'));
