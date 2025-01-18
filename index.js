@@ -75,3 +75,19 @@ function chnageLetter(x){
 }
 
 console.log(chnageLetter('aRuNmSsssssMmmss'));
+
+function findCountOfChar(data){
+    if(data.length <=0)return "Please Provide Valid data"
+    let result= {}
+    for(let i=0;i<data.length;i++){
+        let currentLettr = data[i]
+        if(result[i]>0){
+            result[currentLettr]++
+        }else{
+            result[currentLettr]=1
+        }
+    }
+    return result
+}
+
+console.log(findCountOfChar("hello"));
