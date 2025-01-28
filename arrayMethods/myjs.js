@@ -325,6 +325,30 @@ console.log(frequencyCounter1,"fre");
 }
 
 // Example Usage
-console.log(findSquareArray([1, 2, 3], [1, 4, 9])); // true
+//console.log(findSquareArray([1, 2, 3], [1, 4, 9])); // true
 // console.log(findSquareArray([1, 2, 3], [1, 9, 4])); // true
 // console.log(findSquareArray([1, 2, 3], [1, 4, 4])); // false
+
+function isAnagram(str1,str2){
+    if(str1.length !==str2.length) return "false"
+    let frequencyCounter1={}
+
+    for(let str of str1.toLowerCase()){
+        frequencyCounter1[str] = (frequencyCounter1[str]||0)+1;
+    }
+
+    for(let str of str2.toLowerCase()){
+        if (!frequencyCounter1[str]) return false
+        frequencyCounter1[str]--
+    }
+ 
+
+    return true
+
+}
+console.log(isAnagram("listen", "silent"));
+console.log(isAnagram("hello", "world"));  // false  
+  console.log(isAnagram("rat", "car"));      // false  
+  console.log(isAnagram("anagram", "nagaram")); // true  
+
+
