@@ -251,7 +251,7 @@ c:{
 // flattens(data)
 // return x
 // }
-console.log(flattenObject(objs));
+// console.log(flattenObject(objs));
 
 function flattenObject(data){
     let result = []
@@ -269,3 +269,62 @@ function flattenObject(data){
     return result
 }
 
+
+
+function findCountOfChar(data){
+    if(data.length <=0)return "Please Provide Valid data"
+    let result= {}
+    for(var char of data){
+        char = char.toLowerCase()
+       if(isAlphaNumeric(char)){
+      
+       result[char]=(result[char] || 0) + 1
+       
+    }
+      
+    }
+    return result
+}
+
+
+function isAlphaNumeric(str){
+    let code = str.charCodeAt(0)
+    console.log(code);
+    if(!(code >47 && code <58) && !(code >64 && code <91) && !(code >96 && code <123)) {
+        return false
+    }
+    return true
+}
+// console.log(findCountOfChar("hello guys !234"));
+
+
+function findSquareArray(array1, array2) {
+    if (array1.length !== array2.length) return false;
+
+    let frequencyCounter1 = {};
+    let frequencyCounter2 = {};
+
+    // Count frequency of numbers in array1
+    for (let num of array1) {
+        frequencyCounter1[num ** 2] = (frequencyCounter1[num ** 2] || 0) + 1;
+    }
+console.log(frequencyCounter1,"fre");
+    // Count frequency of numbers in array2
+    for (let num of array2) {
+        frequencyCounter2[num] = (frequencyCounter2[num] || 0) + 1;
+    }
+
+    // Compare frequency maps
+    for (let key in frequencyCounter1) {
+        if (frequencyCounter1[key] !== frequencyCounter2[key]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// Example Usage
+console.log(findSquareArray([1, 2, 3], [1, 4, 9])); // true
+// console.log(findSquareArray([1, 2, 3], [1, 9, 4])); // true
+// console.log(findSquareArray([1, 2, 3], [1, 4, 4])); // false
