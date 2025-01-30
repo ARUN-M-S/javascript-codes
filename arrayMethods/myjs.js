@@ -346,9 +346,108 @@ function isAnagram(str1,str2){
     return true
 
 }
-console.log(isAnagram("listen", "silent"));
-console.log(isAnagram("hello", "world"));  // false  
-  console.log(isAnagram("rat", "car"));      // false  
-  console.log(isAnagram("anagram", "nagaram")); // true  
+// console.log(isAnagram("listen", "silent"));
+// console.log(isAnagram("hello", "world"));  // false  
+//   console.log(isAnagram("rat", "car"));      // false  
+//   console.log(isAnagram("anagram", "nagaram")); // true  
+
+function isPermutation(array1,array2){
+    if (!Array.isArray(array1) || !Array.isArray(array2)) return "Please share a valid array";
+   if(array1.length !== array2.length) return false;
+   let frequencyCounter1={}
+
+    for(let ele of array1){
+        frequencyCounter1[ele] = (frequencyCounter1[ele]||0)+1;
+    }
+
+for(let ele of array2){
+ 
+    if(!frequencyCounter1[ele]) return false
+    frequencyCounter1[ele]--
+}
+return true
+
+}
+// console.log(isPermutation([1, 2, 3], [3, 2, 1])); // true ✅ (Same elements, different order)
+// console.log(isPermutation([4, 5, 6], [6, 5, 4])); // true ✅
+// console.log(isPermutation([1, 2, 3], [1, 2, 2])); // false ❌ (Different frequency)
+// console.log(isPermutation([1, 2, 3], [1, 2]));   // false ❌ (Different lengths)
+// console.log(isPermutation(["a", "b", "c"], ["c", "b", "a"])); // true ✅ (Works for strings too
 
 
+function isFrequennumber(num1,num2){
+    let numStr1 =num1.toString();
+    let numStr2 =num2.toString();
+    if(numStr1.length !== numStr2.length) return false;
+    let frequencyCounter= {};
+    for(let num of numStr1){
+        frequencyCounter[num] = (frequencyCounter[num] ||0)+1;
+    }
+    for(let key of numStr2){
+        if(!frequencyCounter[key]) return false;
+        frequencyCounter[key]--
+    }
+    return true
+}
+
+// console.log(isFrequennumber(123,321));
+
+
+function findDuplicate(arr){
+    if(!Array.isArray(arr) || arr.length==0) return false;
+    let duplicateCounter={}
+for(let elem of arr){
+    duplicateCounter[elem]=(duplicateCounter[elem]||0)+1;
+    if(duplicateCounter[elem] >1 )return true
+}
+return false
+}
+
+// console.log(findDuplicate([1,2,3,4,5]));
+
+
+function findIntersection(arr1,arr2){
+    if((!Array.isArray(arr1) ||!Array.isArray(arr1)) || (arr1.length ==0 || arr1.length ==0 ) )return "Invalid array";
+    let frequencyCounter ={};
+    let commonValue =[]
+    for(elem of arr1){
+        frequencyCounter[elem] = (frequencyCounter[elem]||0)+1;
+    }
+  //  console.log(frequencyCounter,"freq");
+    for(elem2 of arr2){
+       // console.log(frequencyCounter[elem2],"countr");
+        if(frequencyCounter[elem2]){
+            commonValue.push(elem2)
+            frequencyCounter[elem2]--
+        }
+       // frequencyCounter[elem2]?  : null
+    }
+    return commonValue
+}
+console.log(findIntersection([1, 2, 2, 1], [2, 2]));  // Expected Output: [2, 2]
+console.log(findIntersection([4, 9, 5], [9, 4, 9, 8, 4]));  // Expected Output: [9, 4]
+console.log(findIntersection([1, 2, 3, 4], [3, 4, 5, 6]));  // Expected Output: [3, 4]
+console.log(findIntersection([1, 1, 1], [1, 1]));  // Expected Output: [1, 1]
+console.log(findIntersection([7, 8, 9], [9, 10, 7]));  // Expected Output: [7, 9]
+
+
+
+
+
+
+function groupAnagram(arr){
+    if(!Array.isArray(arr) || arr.length ==0)return false;
+    let frequencyCounter ={};
+    for (let elem of arr){
+        let sortedWord = elem.split('').sort().join('');Z
+        console.log(frequencyCounter[sortedWord]);
+if(frequencyCounter[sortedWord]){
+    frequencyCounter[sortedWord].push(elem)
+}else{
+    frequencyCounter[sortedWord] =[elem]
+}
+console.log(frequencyCounter[sortedWord],"after push");
+    }
+   return Object.values(frequencyCounter)
+}
+ console.log(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"])); 
