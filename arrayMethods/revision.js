@@ -310,4 +310,109 @@ for(let j=0;j<target.length;j++){
     }
 }
 
-console.log(seachText('mangalasseril arun ms','ass')); 
+// console.log(seachText('mangalasseril arun ms','ass')); 
+
+
+function bubbleSortPsudo(arr){
+    if(!Array.isArray(arr)|| arr.length ==0 )return false;
+let noSwap = true;
+    for(let i=0;i<arr.length;i++){
+        for(let j=i+1;j<arr.length;j++){
+            console.log(arr[i],arr[j]);
+            if(arr[i]<arr[j]){
+                let temp = arr[i]
+                arr[i]=arr[j]
+                arr[j]=temp
+                noSwap=false
+            }
+         
+        }
+        if(noSwap) break;
+        console.log("one pass completed");
+    }
+    return arr
+}
+
+// console.log(bubbleSortPsudo([4,1,5,9,3,6,7]));
+// console.log(bubbleSortPsudo([8,1,2,3,4,5,6]));
+// console.log(bubbleSortPsudo([8,7,6,5,4,3,2,9]));
+
+
+function selectionSortPsudo(arr){
+    if(!Array.isArray(arr)|| arr.length ==0 )return false;
+let noSwap = true;
+    for(let i=0;i<arr.length;i++){
+        let lowest=i
+        for(let j=i+1;j<arr.length;j++){
+            console.log(arr[i],arr[j]);
+            if(arr[j]<arr[lowest]){
+                lowest=j
+            }
+ 
+         
+        }
+        let temp= arr[i]
+        arr[i]=arr[lowest]
+        arr[lowest]=temp
+        // if(noSwap) break;
+        console.log(arr);
+        console.log("one pass completed");
+    }
+    return arr
+}
+
+// console.log(selectionSortPsudo([8,1,2,3,4,5,6]));
+
+
+
+function InsertionSortPsudo(arr){
+    if(!Array.isArray(arr)|| arr.length ==0 )return false;
+let noSwap = true;
+    for(let i=1;i<arr.length;i++){
+        let lowest=arr[i]
+        for(var j=i-1;j>=0 && arr[j] >lowest;j--){
+            console.log(lowest,arr[j]);
+            // if(arr[j]>lowest){
+               arr[j+1]=arr[j]
+            // }
+         
+ 
+         
+        }
+        arr[j+1]=lowest
+      
+        // if(noSwap) break;
+        console.log(arr);
+        console.log("one pass completed");
+    }
+    return arr
+}
+
+// console.log(InsertionSortPsudo([8,2,1,3,5]));
+
+
+function mergeTwoArray(arr1,arr2){
+  let i=0;
+  let  j=0;
+  let merged=[];
+
+  while(i<arr1.length && j<arr2.length){
+      if(arr1[i]<arr2[j]){
+          merged.push(arr1[i]);
+          i++
+      console.log(merged,"merged ii");
+
+      }else{
+          merged.push(arr2[j]);
+          j++
+      console.log(merged,"merged jj");
+
+      }
+      while(i<arr1.length)merged.push(arr1[i++])
+      while(j<arr2.length)merged.push(arr2[j++])
+
+      console.log(merged,"merged");
+  }
+}
+
+console.log(mergeTwoArray([1,5,6,7],[2,3,8]));
