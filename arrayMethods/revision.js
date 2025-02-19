@@ -396,23 +396,143 @@ function mergeTwoArray(arr1,arr2){
   let  j=0;
   let merged=[];
 
-  while(i<arr1.length && j<arr2.length){
-      if(arr1[i]<arr2[j]){
-          merged.push(arr1[i]);
-          i++
-      console.log(merged,"merged ii");
-
-      }else{
-          merged.push(arr2[j]);
-          j++
-      console.log(merged,"merged jj");
-
-      }
-      while(i<arr1.length)merged.push(arr1[i++])
-      while(j<arr2.length)merged.push(arr2[j++])
-
-      console.log(merged,"merged");
-  }
+ while(i<arr1.length && j<arr2.length){
+     if(arr1[i]<arr2[j]){
+         merged.push(arr1[i]);
+         i++
+     }else{
+         merged.push(arr2[j]);
+         j++
+     }
+     while(i<arr1.length) merged.push(arr1[i++])
+     while(j<arr2.length) merged.push(arr2[j++])
+return merged
+ }
 }
 
-console.log(mergeTwoArray([1,5,6,7],[2,3,8]));
+// console.log(mergeTwoArray([1,5,6,7],[2,3,8]));
+
+
+function jsMergeSort(arr1,arr2){
+    return[...arr1, ...arr2].sort((a,b)=>a-b)
+}
+
+// console.log(jsMergeSort([1,5,6,7],[2,3,8]));
+
+
+
+
+
+function swpaArray(arr,start=0,end=arr.length-1){
+    let swap = (arr1,idx1,idx2)=>{
+         [arr1[idx1],arr1[idx2]]=[arr1[idx2],arr1[idx1]]
+    };
+
+    let pivot = arr[start];
+    let swapIndex = start;
+
+    for(var i =start+1;i<=end;i++){
+        if(pivot>arr[i]){
+            swapIndex++
+            swap(arr,swapIndex,i)
+            console.log(arr);
+        }
+    }
+    swap(arr,start,swapIndex)
+    return swapIndex
+}
+
+function quickSort(arr,left=0,right=arr.length-1){
+    if(left<right){
+        let pivotIndex = swpaArray(arr,left,right);
+        quickSort(arr,left,pivotIndex-1)
+        quickSort(arr,pivotIndex+1,right)
+
+
+    }
+    return arr
+}
+
+// console.log(quickSort([4,8,-3,-6,10,2,5,3,2,1,9]));
+
+
+
+function getDigit(num,i){
+    return Math.floor(Math.abs(num)/Math.pow(10,i))%10
+}
+function countDigit(num){
+    if(num==0) return 1
+    return Math.floor(Math.log10(num))+1
+}
+
+
+function mostDigit(arr){
+    let max=0;
+    for(let i =0;i<arr.length;i++){
+        max=Math.max(max, countDigit(arr[i]))
+        // console.log(max);
+    }
+return max
+}
+
+// console.log(mostDigit([1,22,44,555,645454,787654526,22,33,1,2,3]));
+// console.log(getDigit(234,));
+
+// console.log(countDigit(555));
+
+
+
+var removeDuplicates = function (nums) {
+    let frequencyCounter = {}
+    let result = []
+    for (let elem of nums) {
+        frequencyCounter[elem] = (frequencyCounter[elem] || 0) + 1
+    }
+    
+    for (elem in frequencyCounter) {
+        if (frequencyCounter[elem] >= 1) {
+            result.push(elem);
+            frequencyCounter[elem] -= 1
+        }
+    }
+
+    return result
+};
+
+
+//   console.log(removeDuplicates([33,33,2]));
+var removeElement = function(nums, val) {
+    let slow =0;
+    for(let fast =0;fast<nums.length;fast++){
+      if(nums[fast]!==val){
+   
+        nums[slow]=nums[fast]
+        slow++
+      }
+      
+    }
+    return slow
+};
+                
+// console.log(removeElement([1,2,5,5,5,6,2,6,2,1,5],5));
+
+var romanToInt = function (s) {
+
+    let romanObject = {
+        'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000
+    }
+    let sum = 0
+    for (let i = 0; i < s.length; i++) {
+        if (romanObject[s[i]] < romanObject[s[i + 1]] && i < s.length - 1) {
+            sum -= romanObject[s[i]]
+        }
+        else {
+            sum += romanObject[s[i]]
+        }
+    }
+
+    return sum
+};
+
+console.log(romanToInt("LVIII"));
+         50 + 5 
