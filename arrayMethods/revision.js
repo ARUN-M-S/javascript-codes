@@ -534,5 +534,20 @@ var romanToInt = function (s) {
     return sum
 };
 
-console.log(romanToInt("LVIII"));
-         50 + 5 
+// console.log(romanToInt("LVIII"));
+
+
+function twoSum(arr,num){
+    if (!Array.isArray(arr)) return false;
+    let arr1= new Object()
+    for(let i=0;i<arr.length;i++){
+        if(arr1.hasOwnProperty(num-arr[i])){
+            return [num-arr[i],arr[i]]
+        }else{
+           arr1[arr[i]]=i
+           console.log(arr1);
+        }
+    }
+    return false
+}
+         console.log(twoSum([4,3,2,3,56,2,1,3,4,8],9));
