@@ -537,17 +537,185 @@ var romanToInt = function (s) {
 // console.log(romanToInt("LVIII"));
 
 
-function twoSum(arr,num){
-    if (!Array.isArray(arr)) return false;
-    let arr1= new Object()
-    for(let i=0;i<arr.length;i++){
-        if(arr1.hasOwnProperty(num-arr[i])){
-            return [num-arr[i],arr[i]]
-        }else{
-           arr1[arr[i]]=i
-           console.log(arr1);
+// function twoSum(arr,num){
+//     if (!Array.isArray(arr)) return false;
+//     let arr1= new Object()
+//     for(let i=0;i<arr.length;i++){
+//         if(arr1.hasOwnProperty(num-arr[i])){
+//             return [num-arr[i],arr[i]]
+//         }else{
+//            arr1[arr[i]]=i
+//            console.log(arr1);
+//         }
+//     }
+//     return false
+// }
+//       console.log(twoSum([4,3,2,3,56,2,1,3,4,8],9));
+
+
+         var nextPermutation = function(nums) {
+             let smallPointer =0
+             for(let i=0;i<nums.length;i++){
+
+             }
+    
+        };
+
+
+
+        var majorityElement = function(nums) {
+
+            let frequencyCounter ={}
+            
+            for(elem of nums){
+                frequencyCounter[elem]= (frequencyCounter[elem]||0)+1
+                console.log(frequencyCounter);
+                if(frequencyCounter[elem]>nums.length/2) return elem
+            }
+            return false
+                
+            };
+
+
+
+            var majorityElement = function(nums) {
+                let candidate = null;
+                let count = 0;
+            
+                for (let num of nums) {
+                    console.log(count,"count");
+                    if (count === 0) {
+                        candidate = num;
+                    }
+                    console.log(candidate);
+                    count += (num === candidate) ? 1 : -1;
+                }
+                
+                return candidate;
+            };
+            
+
+
+            // console.log(majorityElement([1,2,2,3,3,3,1,1,1,1]));
+
+            var twoSum = function(numbers, target) {
+                let frequencyCounter ={};
+                for(let i=0;i<numbers.length;i++){
+                    frequencyCounter[numbers[i]] = i;
+                    console.log(frequencyCounter);
+                    if((target-numbers[i]) in frequencyCounter){
+                        return [i,frequencyCounter[target-numbers[i]]]
+                    }
+                }
+                return []
+            };
+
+
+            // console.log(twoSum([1,2,6,5,10,7],9));
+
+            var singleNumber = function(nums) {
+                let frequencyCounter =  { }
+            
+                for(let num of nums){
+                    frequencyCounter[num] = (frequencyCounter[num]||0)+1
+                }
+                for(let num in frequencyCounter){
+                    if(frequencyCounter[num]==1)return num
+                }
+                return -1
+            };
+
+
+           // console.log(singleNumber([1,2,2,3,3]));
+
+
+
+            var missingNumber = function(nums) {
+                let missing = nums.length;
+                for (let i = 0; i < nums.length; i++) {
+                    missing ^= i ^ nums[i];  // XOR index and value
+                    console.log(missing,"inside");
+                    console.log(i ^ nums[i],"xyx");
+                }
+                return missing;
+            };
+// console.log(missingNumber([0,3,4,2,1,6,7,9,5]));  
+
+
+strs = ["eat","tea","tan","ate","nat","bat"]
+
+function groupAnagram(arr){
+    let objec={};
+    for(let elem of arr){
+        let sorted = elem.split('').sort().join('')
+      if(objec[sorted]){
+          objec[sorted].push(elem)
+          console.log(objec);
+      }else{
+        objec[sorted]=[elem]
+      }
+    }
+return Object.values(objec)
+}
+
+// console.log(groupAnagram(strs));
+
+
+// var findAnagrams = function(s, p) {
+    
+// };
+
+// s = "cbaebabacd", p = "abc"
+
+// console.log(s,p);
+
+
+function computSum(num){
+    let sum =0
+
+    while(num>0){
+        sum+= num%10
+        console.log(sum);
+        num=Math.floor(num/10)
+        console.log(num);
+    }
+    return sum
+}
+
+// console.log(computSum('1234'));
+
+
+let user = {
+name:"Arun",
+Address:{
+    primary:{
+        house:"1",
+        street:{
+            main:21,
+            cross:["32","33"]
         }
     }
-    return false
 }
-         console.log(twoSum([4,3,2,3,56,2,1,3,4,8],9));
+}
+
+
+function flattenObject(obj, path='', result={}) {
+
+
+        Object.keys(obj).forEach((keys) => {
+            let currentPath = path ? `${path}${keys.slice(0,1).toUpperCase()}${keys.slice(1).toLowerCase()}` : keys;
+
+            if (typeof obj[keys] === 'object' && obj[keys] !== null && !Array.isArray(obj[keys])) {
+                flattenObject(obj[keys], currentPath, result)
+            } else {
+                result[currentPath] = obj[keys];
+            }
+          
+
+        })
+
+        return result;
+
+}
+
+console.log(flattenObject(user,'user'));
