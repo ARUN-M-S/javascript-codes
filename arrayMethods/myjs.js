@@ -4,28 +4,47 @@
 
 
 let arr=[1,[2,[3,[4],[5]],[6]],7] 
-function flattenArray(arr) {
 
-    //Validate is array or not
-    if (!Array.isArray(arr)) return 'Is not an array'
-    let result = []
-    // Loop method + Recurssion
-    for (let i = 0; i < arr.length; i++) {
-        if (Array.isArray(arr[i])) {
-            result = result.concat(flattenArray(arr[i]))
-        } else {
-            result.push(arr[i])
-        }
-    }
-    return result
-}
+// function flattenArray(arr) {
+
+// let result =[];
+
+// for(let num of arr){
+//    if(Array.isArray(num)){
+//    result= result.concat(flattenArray(num))
+//    }else{
+//        result.push(num)
+//    }
+// }
+// return result;
+// }
+console.log(flattenReducer(arr),"arr result");
+// function flattenArray(arr) {
+
+//     //Validate is array or not
+//     if (!Array.isArray(arr)) return 'Is not an array'
+//     let result = []
+//     // Loop method + Recurssion
+//     for (let i = 0; i < arr.length; i++) {
+//         if (Array.isArray(arr[i])) {
+//             result = result.concat(flattenArray(arr[i]))
+//         } else {
+//             result.push(arr[i])
+//         }
+//     }
+//     return result
+// }
 
 // with reduce method
 
+
+function flattenReducer (arr){
+arr.reduce((acc,num)=> Array.isArray(num) ? acc.concat(flattenReducer(num)) :acc.push(num),[] )
+}
 function flattenArrayReduce(arr) {
     //Validate is array or not
     if (!Array.isArray(arr)) return 'Is not an array'
-    return arr.reduce((acc, value) => Array.isArray(value) ? acc.concat(flattenArrayReduce(value)) : acc.concat(value), [])
+    return arr.reduce((acc, value) => Array.isArray(value) ? acc.concat(flattenArrayReduce(value)) : acc.push(value), [])
 }
 // console.log(flattenArrayReduce(arr))
 //========================================Q2====================================
@@ -450,4 +469,4 @@ console.log(frequencyCounter[sortedWord],"after push");
     }
    return Object.values(frequencyCounter)
 }
- console.log(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"])); 
+//  console.log(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"])); 
