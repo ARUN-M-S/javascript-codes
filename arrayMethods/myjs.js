@@ -131,23 +131,24 @@ function deBouncing(func,wait){
         clearTimeout(timeOut)
         return new Promise((resolve)=>{
            timeOut = setTimeout(()=>{
-resolve(func.apply(this,args))
+           resolve(func.apply(this,args))
            },wait)
         })
     }
 }
 
-function throttlle(func,limit){
- let throttled = false;
-return function(...args){
-    if(!throttled){
-        func.apply(this,args);
-        throttled= true;
-        setTimeout(()=>{
-throttled=false
-        },limit)
+function throttlle(func, limit) {
+    let throttled = false;
+    return function (...args) {
+        if (!throttled) {
+            func.apply(this, args);
+            throttled = true;
+            setTimeout(() => {
+                throttled = false
+            }, limit)
+        }
     }
-}}
+}
 
 
 
