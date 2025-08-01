@@ -46,7 +46,8 @@ function App() {
   }
   const indexOfLast=currentPage*usersPerPage;
   const indexOfFirst=indexOfLast -usersPerPage ;
-  const currentUsers = users.slice(indexOfFirst,indexOfLast)
+  const currentUsers = users.slice(indexOfFirst,indexOfLast);
+  const totalPages = Math.ceil(users.length/usersPerPage)
   
 
   return (
@@ -75,7 +76,7 @@ function App() {
       </table>
       <div style={{marginTop:10}}>
         <button disabled={currentPage==1} onClick={handlePrev} >prev</button>
-        <span>{currentPage} of 3</span>
+        <span>{currentPage} of {totalPages}</span>
         <button disabled={currentPage==3} onClick={handleNext}>next</button>
       </div>
 
