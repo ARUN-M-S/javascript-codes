@@ -35,6 +35,15 @@ function App() {
       }
     }, 300);
   }
+  
+  function handleNext(){
+    setCurrentPage(currentPage+1)
+  }
+  
+  function handlePrev(){
+    setCurrentPage(currentPage-1)
+    
+  }
 
   return (
     <div>
@@ -61,9 +70,9 @@ function App() {
         </tbody>
       </table>
       <div style={{marginTop:10}}>
-        <button>prev</button>
-        <span>1 of 3</span>
-        <button>next</button>
+        <button disabled={currentPage==1} onClick={handlePrev} >prev</button>
+        <span>{currentPage} of 3</span>
+        <button disabled={currentPage==3} onClick={handleNext}>next</button>
       </div>
 
    
