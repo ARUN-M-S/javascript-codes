@@ -21,7 +21,7 @@ function App() {
     const value = e.target.value.toLowerCase();
     clearTimeout(debounce.current);
     debounce.current = setTimeout(() => {
- // reset to first page on search
+  setCurrentPage(1);// reset to first page on search
       if (value === '') {
         setUsers(originalUser);
       } else {
@@ -69,14 +69,14 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          { 
+          { currentUsers.length>0 ? (
             currentUsers.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.city}</td>
               </tr>
-            ))
+            )) ) :(<tr> <td colSpan={3}>No user Found</td></tr>)
           }
         </tbody>
       </table>
