@@ -44,6 +44,10 @@ function App() {
     setCurrentPage(currentPage-1)
     
   }
+  const indexOfLast=currentPage*usersPerPage;
+  const indexOfFirst=indexOfLast -usersPerPage ;
+  const currentUsers = users.slice(indexOfFirst,indexOfLast)
+  
 
   return (
     <div>
@@ -59,7 +63,7 @@ function App() {
         </thead>
         <tbody>
           { 
-            users.map((item) => (
+            currentUsers.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
