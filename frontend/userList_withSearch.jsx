@@ -36,19 +36,25 @@ function App() {
     }, 300);
   }
   
-  function handleNext(){
-    setCurrentPage(currentPage+1)
-  }
-  
-  function handlePrev(){
-    setCurrentPage(currentPage-1)
-    
-  }
+
   const indexOfLast=currentPage*usersPerPage;
   const indexOfFirst=indexOfLast -usersPerPage ;
   const currentUsers = users.slice(indexOfFirst,indexOfLast);
   const totalPages = Math.ceil(users.length/usersPerPage)
+    function handleNext(){
+      if(currentPage<totalPages){
+        setCurrentPage((prev) =>prev+1)
+      }
+    
+  }
   
+  function handlePrev(){
+     if(currentPage>1){
+         setCurrentPage((prev) =>prev-1)
+      }
+   
+    
+  }
 
   return (
     <div>
